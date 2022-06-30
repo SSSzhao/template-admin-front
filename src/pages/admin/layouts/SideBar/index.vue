@@ -17,10 +17,10 @@
 import { RouterLink } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
-import { menuList } from '@/router/instance'
+// import { menuList } from '@/router/instance'
 
 const menus = computed(() => {
-  return setMenu(menuList)
+  return setMenu([])
 })
 
 const setMenu = (routes: RouteRecordRaw[]): MenuOption[] => {

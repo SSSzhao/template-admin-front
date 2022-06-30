@@ -10,7 +10,7 @@
   </n-scrollbar>
 </template>
 <script setup lang="ts">
-import useAppStore from '@/store/modules/app'
+import useAppStore from '@admin/store/modules/app'
 
 const useApp = useAppStore()
 const load = computed(() => {

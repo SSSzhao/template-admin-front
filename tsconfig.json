@@ -15,6 +15,12 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@admin/*": [
+        "./src/pages/admin/*"
+      ],
+      "@views/*": [
+        "./src/pages/views/*"
       ]
     },
     "lib": [

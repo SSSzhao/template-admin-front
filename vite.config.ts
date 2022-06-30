@@ -7,6 +7,8 @@ import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import Layouts from 'vite-plugin-vue-layouts'
+import Pages from 'vite-plugin-pages'
 import WindiCSS from 'vite-plugin-windicss'
 import { readFile } from 'fs/promises'
 
@@ -38,11 +40,24 @@ export default async (): Promise<UserConfigExport> => {
         compiler: 'vue3',
         autoInstall: true
       }),
+      Layouts({
+        layoutsDirs: 'src/pages/admin/layouts'
+      }),
+      Pages({
+        dirs: [
+          { dir: 'src/pages/admin/src', baseRoute: 'admin' },
+          { dir: 'src/pages/views/src', baseRoute: 'form' }
+        ],
+        exclude: ['**/components/*.vue'],
+        importMode: 'async'
+      }),
       WindiCSS()
     ],
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+        '@admin': fileURLToPath(new URL('./src/pages/admin', import.meta.url)),
+        '@views': fileURLToPath(new URL('./src/pages/views', import.meta.url))
       }
     },
     base: './',
@@ -74,6 +89,17 @@ export default async (): Promise<UserConfigExport> => {
         output: {
           // 删除注释
           comments: false
+        }
+      },
+      rollupOptions: {
+        input: {
+          form: fileURLToPath(new URL('index.html', import.meta.url)),
+          admin: fileURLToPath(new URL('admin.html', import.meta.url))
+        },
+        output: {
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
         }
       }
     }

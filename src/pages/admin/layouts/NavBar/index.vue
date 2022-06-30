@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { loginUrl } from '@/router/instance'
-import useAppStore from '@/store/modules/app'
+import { loginUrl } from '@admin/router/instance'
+import useAppStore from '@admin/store/modules/app'
 import Breadcrumb from './breadcrumb.vue'
 
 const useApp = useAppStore()
