@@ -6,7 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ICiRefresh02: typeof import('~icons/ci/refresh02')['default']
-    NaiveProvider: typeof import('./src/components/NaiveProvider.vue')['default']
+    NaiveProvider: typeof import('./src/pages/admin/components/NaiveProvider.vue')['default']
     NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
@@ -24,6 +24,8 @@ declare module '@vue/runtime-core' {
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VanButton: typeof import('vant/es')['Button']
+    VanPopup: typeof import('vant/es')['Popup']
   }
 }
 

@@ -6,7 +6,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 
 export const loginUrl = '/login'
 
-const adminRoutes = routes.filter(i => String(i.path).includes('/admin'))
+const adminRoutes = routes.filter(i => !String(i.path).includes('/form'))
 
 console.log(adminRoutes)
 

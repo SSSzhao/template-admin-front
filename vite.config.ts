@@ -4,7 +4,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { NaiveUiResolver, VantResolver } from 'unplugin-vue-components/resolvers'
+import styleImport, { VantResolve } from 'vite-plugin-style-import'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -20,8 +21,12 @@ export default async (): Promise<UserConfigExport> => {
       vue(),
       vueJsx(),
       Components({
-        resolvers: [NaiveUiResolver(), IconsResolver()],
+        dirs: ['src/pages/admin/components'],
+        resolvers: [NaiveUiResolver(), VantResolver(), IconsResolver()],
         directoryAsNamespace: true
+      }),
+      styleImport({
+        resolves: [VantResolve()]
       }),
       AutoImport({
         imports: ['vue', 'vue-router', '@vueuse/core'],
@@ -45,7 +50,7 @@ export default async (): Promise<UserConfigExport> => {
       }),
       Pages({
         dirs: [
-          { dir: 'src/pages/admin/src', baseRoute: 'admin' },
+          { dir: 'src/pages/admin/src', baseRoute: '' },
           { dir: 'src/pages/views/src', baseRoute: 'form' }
         ],
         exclude: ['**/components/*.vue'],
@@ -93,8 +98,8 @@ export default async (): Promise<UserConfigExport> => {
       },
       rollupOptions: {
         input: {
-          form: fileURLToPath(new URL('index.html', import.meta.url)),
-          admin: fileURLToPath(new URL('admin.html', import.meta.url))
+          admin: fileURLToPath(new URL('admin.html', import.meta.url)),
+          form: fileURLToPath(new URL('index.html', import.meta.url))
         },
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',

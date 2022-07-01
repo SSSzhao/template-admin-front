@@ -13,7 +13,7 @@
     "@vueuse/core": "^8.6.0",
     "axios": "^0.27.2",
     "pinia": "^2.0.14",
-    "vite-plugin-vue-layouts": "^0.6.0",
+    "vant": "^3.5.2",
     "vue": "^3.2.33",
     "vue-router": "4",
     "vuedraggable": "^4.1.0"
@@ -35,6 +35,7 @@
     "eslint-plugin-vue": "^8.7.1",
     "husky": "^8.0.1",
     "naive-ui": "^2.30.4",
+    "postcss-px-to-viewport": "^1.1.1",
     "prettier": "^2.6.2",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
@@ -44,6 +45,8 @@
     "unplugin-vue-components": "^0.19.6",
     "vite": "^2.9.7",
     "vite-plugin-pages": "^0.24.3",
+    "vite-plugin-style-import": "^1.4.1",
+    "vite-plugin-vue-layouts": "^0.6.0",
     "vite-plugin-windicss": "^1.8.4",
     "vue-tsc": "^0.34.7",
     "windicss": "^3.5.4"
