@@ -35,3 +35,9 @@ const list2 = ref([
 ])
 </script>
 <style lang="scss" scoped></style>
+
+<route lang="yaml">
+meta:
+  title: '问卷管理'
+  sort: 1
+</route>

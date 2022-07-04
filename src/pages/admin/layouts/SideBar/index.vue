@@ -1,11 +1,10 @@
 <template>
   <n-scrollbar class="h-screen">
-    <div class="h-60px"></div>
+    <div class="h-16"></div>
     <n-menu
       :collapsed-width="54"
       :collapsed-icon-size="22"
       :indent="24"
-      key-field="path"
       :options="menus"
       :render-label="renderMenuLabel"
       :value="defaultValue"
@@ -17,10 +16,11 @@
 import { RouterLink } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
-// import { menuList } from '@/router/instance'
+import { getRoutes } from '@admin/router/instance'
 
 const menus = computed(() => {
-  return setMenu([])
+  const routes = getRoutes()
+  return setMenu(routes)
 })
 
 const setMenu = (routes: RouteRecordRaw[]): MenuOption[] => {
@@ -60,5 +60,3 @@ export default {
   name: 'SideBar'
 }
 </script>
-
-<style lang="scss" scoped></style>
